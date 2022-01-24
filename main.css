@@ -1,0 +1,73 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+body {
+  color: #000;
+  text-rendering: optimizeLegibility;
+  font-size: 1rem;
+  font-weight: 400;
+}
+nav{
+  box-shadow: 2rem 3rem 4rem rgba(0,0,0,0.25);
+}
+.login-screen {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login__input {
+  padding: 0.5rem 1.5rem;
+  margin: 1rem;
+  border-radius: 5px;
+}
+
+.app {
+  background-color: rgb(4, 0, 235);
+  opacity: 0;
+  transition: 1s;
+  padding: 2rem;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 5px;
+  display: flex;
+  box-shadow: 2rem 3rem 4rem rgba(0,0,0,0.25);
+  flex-direction: column;
+}
+.balance {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  height: 1rem;
+}
+.medicineFee {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+.medicineFee__row {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.medicineFee__type--paid {
+  background-color: rgb(5, 218, 76);
+  color: #fff;
+}
+.medicineFee__type--unpaid {
+  background-color: rgb(146, 106, 240);
+  color: rgb(8, 7, 7);
+}
