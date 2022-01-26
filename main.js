@@ -3,27 +3,27 @@
 
 const user1 = {
   name: "Mahmudur Rahman",
-  medicineFee: [
-    40, 50, 45, 30, 3, 35, 360, 280, -600, -310,
-    -25, -600,
-  ],
+  medicineName:[],
+  medicineFee: [],
   id: 1000,
 };
 const user2 = {
   name: "Rafsan Rafin",
   medicineFee: [
-    40, 50,3, 35, 360, 280, -600, -310,
-    -25, -60,
+   
   ],
  id: 2000,
+ medicineName:[],
+
 };
 const user3 = {
   name: "Imam Hossain",
   medicineFee: [
-    40, 50, 45, 30, 3, 35, 360, 280, -600, -310,
-    -25, -600
+   
   ],
   id: 3000,
+  medicineName:[],
+
 };
 
 
@@ -47,16 +47,23 @@ const inputLoginUsername = document.querySelector(".login__input--user");
 const inputLoginPin = document.querySelector(".login__input--pin");
 
 
+const btnTransfer = document.querySelector('.form__btn--transfer');
+const inputTransferAmount = document.querySelector('.form__input--amount');
+
+
+const inputTransferMedicine = document.querySelector('.form__input--medicine');
 /*********Main Container******** */
 
 const medicineFee = (fee, sort = false) => {
   containermedicineFee.innerHTML = "";
-  const justSort = sort ? fee.slice().sort((a, b) => a - b) : fee;
+  const justSort = sort ? fee.medicineFee.slice().sort((a, b) => a - b) : fee.medicineFee;
+
   justSort.forEach((fees, i) => {
-    const checkFees = fees > 0 ? "paid" : "unpaid";
+    const checkFees = fees >= 0 ? "paid" : "unpaid";
+    const mname= fee.medicineName.map(medicine=> medicine);
     const div = `
     <div class="medicineFee__row">
-    <div class="medicineFee__type medicineFee__type--${checkFees}">Item${
+    <div class="medicineFee__type medicineFee__type--${checkFees}">Medicine Name: ${mname} ${
       i + 1
     }</div>
     <div class="medicineFee__value">${fees}€</div>
@@ -74,7 +81,6 @@ const stud = (stu) => {
       .map((stude) => stude[0])
       .join("")
       .toLowerCase();
-    console.log(stud);
   });
 };
 stud(users);
@@ -99,9 +105,24 @@ btnLogin.addEventListener("click", (login) => {
   if (mdc?.id === Number(inputLoginPin.value)) {
     labelWelcome.textContent = `Welcome dear, ${mdc.name.split(" ")[0]}`;
     paidBalance(mdc);
-    medicineFee(mdc.medicineFee);
+    medicineFee(mdc);
     labelLogin.style.opacity = 1;
     containerApp.style.opacity=1;
   }
+});
+
+
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const cost= Number(inputTransferAmount.value);
+  inputTransferAmount.value="";
+  const medicineName= String(inputTransferMedicine.value);
+  inputTransferMedicine.value='';
+  if(true){
+    mdc.medicineFee.push(cost);
+    mdc.medicineName.push(medicineName);
+  }
+  paidBalance(mdc);
+  medicineFee(mdc);
 });
 
