@@ -36,7 +36,7 @@
       <!--*Balance*/-->
       <div class="balance">
         <div>
-          <p class="balance__label">Total Jabeda</p>
+          <p class="balance__label">Total Cost</p>
           <p class="balance__date">
             As of <span class="date"> 5 March 2017</span>
           </p>
@@ -44,9 +44,15 @@
         <p class="balance__value">0000€</p>
       </div>
       <!--Add Price-->
+      <div class="medicineame">
+        <span class="cname"></span>
+       </div>
+       <div class="medicineam">
       <div class="medicineFee">
+        
         <div class="medicineFee__row">
-          <div class="medicineFee__type medicineFee__type--paid"></div>
+          <div class="medicineFee__type medicineFee__type--paid">        
+          </div>
           <div class="medicineFee__date"></div>
           <div class="medicineFee__value"></div>
         </div>
@@ -57,6 +63,8 @@
           <div class="medicineFee__value">-378€</div>
         </div>
       </div>
+    </div>
+
         
 <!--add payment-->
 <div class="operation operation--transfer">
@@ -64,8 +72,7 @@
   <form class="form form--transfer">
     <input type="text" class="form__input form__input--medicine" placeholder="name"/>
     <input type="number" class="form__input form__input--amount" placeholder="price"/>
-    <button class="form__btn form__btn--transfer">&rarr;</button>
-    <label class="form__label">Add</label>
+    <button class="form__btn form__btn--transfer">Add&rarr;</button>
   </form>
 </div>
 

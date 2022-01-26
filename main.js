@@ -42,7 +42,7 @@ const labelBalance = document.querySelector(".balance__value");
 const containerApp = document.querySelector(".app");
 const containermedicineFee = document.querySelector(".medicineFee");
 const btnLogin = document.querySelector(".login__btn");
-const btnSort = document.querySelector(".btn--sort");
+const cname = document.querySelector(".cname");
 const inputLoginUsername = document.querySelector(".login__input--user");
 const inputLoginPin = document.querySelector(".login__input--pin");
 
@@ -59,18 +59,24 @@ const medicineFee = (fee, sort = false) => {
   const justSort = sort ? fee.medicineFee.slice().sort((a, b) => a - b) : fee.medicineFee;
 
   justSort.forEach((fees, i) => {
-    const checkFees = fees >= 0 ? "paid" : "unpaid";
-    const mname= fee.medicineName.map(medicine=> medicine);
+    const checkFees = fees > 0 ? "paid" : "unpaid";
+    const checkvalues=fees>=0? "plus":"minus";
     const div = `
     <div class="medicineFee__row">
-    <div class="medicineFee__type medicineFee__type--${checkFees}">Medicine Name: ${mname} ${
-      i + 1
-    }</div>
-    <div class="medicineFee__value">${fees}€</div>
+    <div class="medicineFee__type medicineFee__type--${checkFees}">${i + 1} &rarr; ${checkFees} </div>
+    <div class="medicineFee__value medicineFee__value-${checkvalues}">${fees}€</div>
   </div>
     `;
     containermedicineFee.insertAdjacentHTML("beforeend", div);
   });
+  cname.innerHTML="";
+  fee.medicineName.forEach((medicine,i)=>{
+    const cheIs= medicine ? medicine: Number(medicine);
+    const div1=`
+    <span class="ccname">${i+1} &rarr; ${cheIs}</span>
+`;
+cname.insertAdjacentHTML("beforeend", div1);
+  }) ;
 };
 
 const stud = (stu) => {
@@ -87,7 +93,7 @@ stud(users);
 //Check Balance
 const paidBalance = (bal) => {
   bal.totalpaid = bal.medicineFee.reduce((acc, bal) => acc + bal, 0);
-  if(bal.totalpaid>0){
+  if(bal.totalpaid>=0){
     labelBalance.textContent = `Total Paid ${bal.totalpaid}`;
   }
  else{
